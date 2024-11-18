@@ -6,6 +6,11 @@ const app = express();
 
 app.use(express.json(), cors());
 
+app.get("/", (req, res) => {
+  const data = fs.readFileSync("data.json", "utf-8");
+  return res.json({ message: "home page" });
+});
+
 app.get("/risk-questions", (req, res) => {
   const data = fs.readFileSync("data.json", "utf-8");
   return res.json(JSON.parse(data));
